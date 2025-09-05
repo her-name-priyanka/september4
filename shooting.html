@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! ✨ Celestial Celebration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a081f, #1a1758, #0f0c29);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+            z-index: 1;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.6); filter: brightness(0.8); }
+            50% { opacity: 1; transform: scale(1); filter: brightness(1.2); }
+        }
+
+        @keyframes shootingStar {
+            0% {
+                transform: translateX(-30px) translateY(-30px) rotate(45deg);
+                opacity: 0;
+                width: 2px;
+                height: 2px;
+            }
+            5% {
+                opacity: 1;
+                width: 4px;
+                height: 4px;
+            }
+            10% {
+                width: 50px;
+                height: 2px;
+            }
+            100% {
+                transform: translateX(120vw) translateY(120vh) rotate(45deg);
+                opacity: 0;
+                width: 70px;
+                height: 1px;
+            }
+        }
+
+        .shooting-star {
+            position: fixed;
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 255, 255, 0.9) 15%,
+                rgba(255, 255, 255, 0.7) 30%,
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(255, 255, 255, 0.3) 70%,
+                rgba(255, 255, 255, 0.1) 85%,
+                transparent 100%
+            );
+            border-radius: 2px;
+            pointer-events: none;
+            z-index: 2;
+            animation: shootingStar 2.8s infinite;
+            filter: blur(0.8px) drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .birthday-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            animation: glow 3s ease-in-out infinite alternate;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        @keyframes glow {
+            from { 
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ffd700, 0 0 40px #ffd700;
+            }
+            to { 
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff6b6b, 0 0 40px #ff6b6b, 0 0 50px #ff6b6b;
+            }
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .premium-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, #ff6b6b, #ffd700, transparent);
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+
+        .wishes-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .wish-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wish-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .wish-card:hover::before {
+            left: 100%;
+        }
+
+        .wish-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .theme-indicator {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #ffd700);
+            border-radius: 20px;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .wish-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .wish-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 3rem;
+            right: 3rem;
+            z-index: 1000;
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+            border-radius: 50px;
+            padding: 0.8rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffd700);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(45deg, #ff6b6b, #ffd700);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 100;
+            animation: confettiFall 4s ease-out forwards;
+            border-radius: 2px;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 99;
+            animation: floatHeart 8s ease-in forwards;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.8);
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1.2) rotate(5deg);
+            }
+            100% {
+                transform: translateY(-100vh) scale(0.6) rotate(15deg);
+                opacity: 0;
+            }
+        }
+
+        .celebration-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 245, 245, 0.95));
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            color: #2d3748;
+            z-index: 200;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            animation: messagePop 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        @keyframes messagePop {
+            0% { transform: translate(-50%, -50%) scale(0) rotate(-5deg); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.05) rotate(2deg); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .celebrate-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffd700);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px rgba(255, 107, 107, 0.4);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .celebrate-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .elegant-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 107, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background elements -->
+    <div id="stars-container"></div>
+    <div id="shooting-stars"></div>
+    <div class="elegant-pattern"></div>
+    
+    <!-- Main content -->
+    <div class="hero-section">
+        <div class="elegant-pattern"></div>
+        <h1 class="birthday-text">Happy Birthday Priyankaaa✨💫</h1>
+        
+        <p class="subtitle">May your special day be as radiant as the stars and as magical as the cosmos</p>
+        
+        <div class="premium-divider"></div>
+        
+        <button onclick="celebrate()" class="celebrate-btn">
+            Celebrate This Moment 🎉
+        </button>
+    </div>
+
+    <div class="wishes-container">
+        <!-- Adventure Theme -->
+        <div class="wish-card">
+            <div class="theme-indicator">🌟 Celestial Adventure</div>
+            <h2 class="wish-title">May Your Year Be an Epic Journey</h2>
+            <p class="wish-text">Like a shooting star blazing across the night sky, may your path be illuminated with extraordinary opportunities and breathtaking moments. May every day bring new cosmic discoveries and your courage shine as brilliantly as the distant galaxies.</p>
+        </div>
+
+        <!-- Success Theme -->
+        <div class="wish-card">
+            <div class="theme-indicator">🚀 Stellar Success</div>
+            <h2 class="wish-title">Reach for the Cosmos</h2>
+            <p class="wish-text">May your dreams ascend like celestial bodies, illuminating the path to unparalleled success. May every aspiration you nurture blossom into reality, and may your achievements sparkle with the intensity of a supernova.</p>
+        </div>
+
+        <!-- Love Theme -->
+        <div class="wish-card">
+            <div class="theme-indicator">💕 Cosmic Love</div>
+            <h2 class="wish-title">Hearts Among the Stars</h2>
+            <p class="wish-text">May your heart radiate warmth like a distant sun and your love remain as constant as the eternal cosmos. Like binary stars in perfect harmony, may you forever orbit in celestial synchrony with those you cherish most.</p>
+        </div>
+
+        <!-- Happiness Theme -->
+        <div class="wish-card">
+            <div class="theme-indicator">✨ Eternal Joy</div>
+            <h2 class="wish-title">Infinite Smiles and Laughter</h2>
+            <p class="wish-text">May joy be your constant companion and happiness your faithful guide through the cosmic journey of life. Like the gentle twinkling of distant constellations, may beautiful moments perpetually illuminate your existence.</p>
+        </div>
+
+        <!-- Growth Theme -->
+        <div class="wish-card">
+            <div class="theme-indicator">🌌 Cosmic Growth</div>
+            <h2 class="wish-title">Expand Like the Universe</div>
+            <p class="wish-text">May you evolve and flourish like the ever-expanding cosmos, discovering new dimensions of strength and wisdom with each passing orbit around the sun. May your potential know no bounds and your spirit shine with celestial brilliance.</p>
+        </div>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="play-btn" onclick="toggleMusic()">
+            <span id="play-icon">▶</span>
+        </button>
+        <!-- <audio id="birthday-music" loop>
+            <source src="./hb orcher.m4a" type="audio/mpeg">
+        </audio> -->
+        <audio id="celebrate-sound">
+            <source src="./hb orcher.m4a" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        // Create background stars - premium smaller stars
+        function createStars() {
+            const container = document.getElementById('stars-container');
+            for (let i = 0; i < 400; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 1.5 + 0.5 + 'px'; // Very small stars: 0.5-2px
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.backgroundColor = `hsl(${Math.random() * 60 + 40}, 100%, ${85 + Math.random() * 15}%)`;
+                container.appendChild(star);
+            }
+        }
+
+        // Create shooting stars - reduced quantity, premium appearance
+        function createShootingStars() {
+            const container = document.getElementById('shooting-stars');
+            setInterval(() => {
+                if (Math.random() < 0.3) { // 30% chance to create a shooting star each interval
+                    const star = document.createElement('div');
+                    star.className = 'shooting-star';
+                    star.style.left = Math.random() * 100 + 'vw';
+                    star.style.top = Math.random() * 100 + 'vh';
+                    star.style.animationDelay = '0s';
+                    star.style.animationDuration = (Math.random() * 0.5 + 2.3) + 's';
+                    star.style.background = `linear-gradient(90deg, 
+                        hsl(50, 100%, 95%) 0%,
+                        hsl(45, 100%, 90%) 15%,
+                        hsl(40, 100%, 80%) 30%,
+                        hsl(35, 100%, 70%) 50%,
+                        hsl(30, 100%, 60%) 70%,
+                        hsl(25, 100%, 40%) 85%,
+                        transparent 100%
+                    )`;
+                    container.appendChild(star);
+                    
+                    setTimeout(() => {
+                        star.remove();
+                    }, 3000);
+                }
+            }, 4000); // Reduced frequency - every 4 seconds with 30% chance
+        }
+
+        // Music control
+        function toggleMusic() {
+            const music = document.getElementById('birthday-music');
+            const icon = document.getElementById('play-icon');
+            
+            if (music.paused) {
+                music.play();
+                icon.textContent = '⏸';
+            } else {
+                music.pause();
+                icon.textContent = '▶';
+            }
+        }
+
+        // Premium celebration effects
+        function celebrate() {
+            // Play celebration sound
+            const sound = document.getElementById('celebrate-sound');
+            sound.currentTime = 0;
+            sound.play();
+            
+            // Premium confetti
+            for (let i = 0; i < 60; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = `linear-gradient(45deg, 
+                        hsl(${Math.random() * 60 + 20}, 100%, 60%),
+                        hsl(${Math.random() * 60 + 40}, 100%, 70%)
+                    )`;
+                    confetti.style.animationDelay = '0s';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 30);
+            }
+
+            // Floating hearts with premium effect
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-hearts';
+                    heart.textContent = '💖';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.fontSize = (Math.random() * 1.5 + 1.8) + 'rem';
+                    heart.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 8000);
+                }, i * 300);
+            }
+
+            // Premium celebration message
+            const messages = [
+                "Happy Birthday! 🌟",
+                "Make a Cosmic Wish! ✨",
+                "You're a Supernova! 💫",
+                "Cheers to the Stars! 🥂",
+                "Shine Eternal! ☀️"
+            ];
+            
+            const message = document.createElement('div');
+            message.className = 'celebration-message';
+            message.innerHTML = `
+                <h3 class="text-3xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">
+                    ${messages[Math.floor(Math.random() * messages.length)]}
+                </h3>
+                <p class="text-xl opacity-80">Your celestial celebration has begun!</p>
+            `;
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 2500);
+        }
+
+        // Initialize everything
+        window.onload = function() {
+            createStars();
+            createShootingStars();
+            
+            // Auto-play music after user interaction
+            document.addEventListener('click', function() {
+                const music = document.getElementById('birthday-music');
+                if (music.paused) {
+                    music.play().catch(() => {
+                        // Handle autoplay restrictions
+                    });
+                }
+            }, { once: true });
+        };
+    </script>
+</body>
+</html>
+
